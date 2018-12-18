@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model chefsdishes.Models.Chef
+    <h1 class="header">Chefs | <a href="/Dishes">Dishes</a></h1>
+    <a class="link" href="/New/Chefs">Add a Chef</a>
+    <h2 class="Title">Check out our roster of Chefs!</h2>
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col"># of dishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var chef in @ViewBag.AllChefs)
+                {
+                <tr>
+                    <th scope="row">@chef.FirstName @chef.LastName</th>
+                    <td>@chef.CalculateAge(@chef.BirthDate)</td>
+                    <td>@chef.Total</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
